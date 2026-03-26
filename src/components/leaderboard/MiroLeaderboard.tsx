@@ -1,0 +1,4 @@
+// Miro Leaderboard - placeholder
+export default function MiroLeaderboard({stocks}:any) {
+  return <div className="p-4"><h2 className="text-[#00c882]">🎯 Miro Flow</h2><table className="w-full"><thead><tr>{('Ticker,Price,Reco,Miro Score,Vol Surge').split(',').map(h => <th key={h} className="text-[8px] text-[#475569] px-2 py-1">{h</th>)}</tr></thead><tbody>{stocks.sort((a:any,b:any) => b.miroScore - a.miroScore).map((s:any) => (<tr key={s.ticker} className="border-b border-[rgba(255,255,255,0.03)] hover:bg-[rgba(0,200,130,0.04)]"><td className="text-[#00a8ff] font-bold px-2 py-1 text-[10px]">{s.ticker.replace('.NS','')}</td><td className="px-2 py-1 text-[10px] font-mono">₹{s.price.toFixed(2)}</td><td className="px-2 py-1 text-[9px]">{s.recommendation}</td><td className="px-2 py-1 text-[10px] font-bold text-[#00c882]">{s.miroScore}</td><td className="px-2 py-1 text-[10px] font-bold">{s.volSurge.toFixed(2)}×</td></tr>))}</tbody></table></div>
+}
