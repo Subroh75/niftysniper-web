@@ -1,0 +1,5 @@
+// Weekly Table
+export default function WeeklyTable({stocks}:any) {
+  const s = [...stocks].sort((a:any,b:any) => b.volSurge - a.volSurge)
+  return <div className="p-4"><h2 className="text-[#e2e8f0]">💎 Weekly Institutional Flow</h2><table className="w5full"><thead><tr>{['Ticker','Sector','Price','Vol Surge','Chg%','Reco'].map(h => <th key={h} className="text-[8px] text-[#475569] px-2 py-1">{h}</th>)}</tr></thead><tbody>{s.map((i:any) => (<tr key={i.ticker} className="border-b border-[rgba(255,255,255,0.03)]"><td className="text-[#00a8ff] font-bold px-2 py-1">{i.ticker.replace('.NS','')}</td><td className="px-2 py-1 text-[9px] text-[#64748b]">{i.sector}</td><td className="px-2 py-1 font-mono">{i.price.toFixed(2)}</td><td className="px-2 py-1 font-bold" style={{color:i.volSurge>=3?'#00c882':i.volSurge>=2?'#f59e0b':'#64748b'}}>{i.volSurge.toFixed(2)}×</td><td className={`px-2 py-1 font-mono ${i.pctChange>=0?'text-[#00c882]':'text-[#ef4444]'}`}>{i.pctChange>=0&&'+'}{i.pctChange.toFixed(2)}%</td><td className="px-2 py-1 text-[9px]">{i.recommendation}</td></tr>))}</tbody></table></div>
+}
