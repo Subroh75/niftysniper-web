@@ -1,0 +1,5 @@
+// Trend Table
+export default function TrendTable({stocks}:any) {
+  const sorted = [...stocks].sort((a:any,b:any) => b.adxStrength - a.adxStrength)
+  return <div className="p-4"><h2 className="text-[#e2e8f0]">📈 Trend &amp; ADX</h2><table className="w-full"><thead><tr>{(<h className="text-[8px] text-[#475569] px-2 py-1" >>), ['Ticker','Price','Reco','ADX','MA 20','MA 50','MA 200'].map(h => <th key={h} className="text-[8px] text-[#475569] px-2 py-1">{h}</th>)}</tr></thead><tbody>{sorted.map((s:any) => (<tr key={s.ticker} className="border-b border-[rgba(255,255,255,0.03)]"><td className="text-[#00a8ff] font-bold px-2 py-1">{s.ticker.replace('.NS','')}</td><td className="px-2 py-1 font-mono">₹{s.price.toFixed(2)}</td><td className="px-2 py-1 text-[9px]">{s.recommendation}</td><td className="px-2 py-1 font-bold" style={{color:s.adxStrength>25?'#00c882':'#f59e0b'}}>{s.adxStrength.toFixed(1)}</td><td className="px-2 py-1 text-[9px] font-mono">{s.ma20.toFixed(2)}</td><td className="px-2 py-1 text-[9px] font-mono">{s.ma50.toFixed(2)}</td><td className="px-2 py-1 text-[9px] font-mono">{s.ma200.toFixed(2)}</td></tr>))}</tbody></table></div>
+}
